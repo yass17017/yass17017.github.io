@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Webfive · Ton site en 5 jours</title>
+<meta name="description" content="Décris ton projet en une phrase, regarde ton site se construire, puis on le réalise pour de vrai. 900 € une seule fois, maquette gratuite, livré en 5 jours. Commerce, e-commerce, entrepreneur, artisan, coach, association.">
+<meta property="og:title" content="Webfive · Ton site en 5 jours">
+<meta property="og:description" content="Ton site en une phrase. 900 € une seule fois, maquette gratuite avant de payer.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'> <path d='M34 18 Q45 48 54 27 Q63 48 74 18' fill='none' stroke='%23111' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/> <circle cx='58' cy='60' r='17' fill='%23F5B800'/> <path d='M51 44 V76 M65 44 V76' stroke='%23111' stroke-width='6'/> <circle cx='58' cy='60' r='17' fill='none' stroke='%23111' stroke-width='6'/> <path d='M41 43 H93' stroke='%23111' stroke-width='6' stroke-linecap='round'/> <circle cx='22' cy='64' r='10' fill='%23F5B800'/> <path d='M12 64 H32 A10 10 0 1 0 27 72.7' fill='none' stroke='%23111' stroke-width='6' stroke-linecap='round'/> </svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&display=swap">
+<style>
+/* Art direction: clean and quiet. White page, Inter, black and greys, one soft grey band, generous spacing.
+   Hero is centred: claim, one sentence bar, phone in the middle. Everything else is thin lines and white cards. */
+:root{
+  --bg:#ffffff; --bg2:#f5f5f7; --ink:#111111; --ink2:#1d1d1f; --muted:#6e6e73; --line:#e5e5ea; --soft:#f2f2f4;
+  --wa:#1fb257; --honey:#F5B800; --honey2:#e9ae00; --honey3:#fff4cc; --f:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--f);padding-inline:22px;margin:0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:68rem;margin-inline:auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.1rem 4.5rem;max-width:68rem;margin-inline:auto}
+.brand{font:600 1.05rem var(--f);color:var(--ink);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:.6rem}
+.brand{font-size:1.25rem;letter-spacing:-.04em}
+.brand .bee{width:34px;height:34px;flex:none}.brand em{font-style:normal;color:var(--honey)}
+nav{display:flex;gap:.2rem;align-items:center}
+nav a{font:500 .9rem var(--f);color:var(--ink2);text-decoration:none;padding:.5rem .85rem;border-radius:999px}
+nav a:hover{background:var(--soft)}
+nav a.btn{background:var(--ink);color:#fff;font-weight:600}
+@media (max-width:640px){nav a:not(.btn){display:none}}
+h1{font:600 clamp(2.6rem,7.5vw,5rem)/1.04 var(--f);letter-spacing:-.045em;margin:0 0 1.2rem;text-wrap:balance;color:var(--ink)}
+h1 span{color:var(--honey)}
+h2{font:600 clamp(1.9rem,4.5vw,3rem)/1.1 var(--f);letter-spacing:-.035em;margin:0 0 .7rem;text-wrap:balance}
+p{margin:0}
+.lead{color:var(--muted);font-size:1.15rem;max-width:36rem;text-wrap:pretty;line-height:1.55}
+.tag{display:inline-flex;align-items:center;gap:.5rem;font:500 .82rem var(--f);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.35rem .85rem;margin-bottom:1.6rem}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--honey);display:inline-block}
+
+/* hero */
+.hero{text-align:center;display:grid;justify-items:center}
+.hero .lead{margin-inline:auto}
+.say{margin-top:2.2rem;width:100%;max-width:40rem;background:#fff;border-radius:22px;padding:.5rem;display:grid;gap:.4rem;box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 40px -12px rgba(0,0,0,.18),0 0 0 1px var(--line);text-align:left}
+textarea{font:400 1.05rem var(--f);padding:.9rem 1rem .5rem;border-radius:16px;border:0;background:transparent;color:var(--ink);width:100%;min-width:0;resize:none;min-height:4.4rem;line-height:1.5}
+textarea::placeholder{color:#a1a1a6}
+textarea:focus{outline:none}
+.go{font:600 .98rem var(--f);padding:.9rem 1.2rem;border-radius:16px;border:0;background:var(--honey);color:var(--ink);cursor:pointer;display:flex;justify-content:center;align-items:center;gap:.5rem;transition:transform .15s,background .2s}
+.go:hover{background:var(--honey2)}
+.go:active{transform:scale(.985)}
+.log{display:grid;gap:.2rem;font:500 .86rem var(--f);color:var(--muted);padding:.4rem .7rem .3rem}
+.log:empty{display:none}
+.log div{animation:rise .4s both}
+.log div::before{content:"✓  ";color:var(--honey2)}
+.log div.add::before{content:"+  ";color:var(--wa)}
+.examples{display:flex;flex-wrap:wrap;gap:.3rem .4rem;justify-content:center;align-items:center;font-size:.85rem;color:var(--muted);margin-top:1rem}
+.examples button{font:500 .85rem var(--f);background:transparent;border:0;color:var(--ink2);cursor:pointer;padding:.3rem .55rem;border-radius:999px}
+.examples button:hover{background:var(--soft)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* stage */
+.stage{margin-top:3.5rem;display:grid;justify-items:center;gap:1.2rem;width:100%;min-width:0}
+.phone{width:min(320px,100%);min-width:0;aspect-ratio:9/19;background:#111;border-radius:50px;padding:11px;box-shadow:0 0 0 1px #2a2a2a,0 40px 80px -30px rgba(0,0,0,.45),inset 0 0 0 2px #2d2d2f;position:relative;z-index:1;transition:transform .15s ease-out;transform-style:preserve-3d}
+.phone::before{content:"";position:absolute;left:50%;top:22px;transform:translateX(-50%);width:96px;height:26px;border-radius:14px;background:#111;z-index:2}
+.screen{border-radius:40px;height:100%;overflow:hidden;position:relative;background:#fff}
+.inner{height:100%;overflow:auto;scrollbar-width:none}
+.inner::-webkit-scrollbar{display:none}
+.seg{display:inline-flex;background:var(--soft);border-radius:999px;padding:4px;gap:2px}
+.mini{font:500 .84rem var(--f);background:transparent;border:0;color:var(--ink2);border-radius:999px;padding:.5rem 1rem;cursor:pointer}
+.mini[aria-pressed="true"]{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+.counter{font:500 .85rem var(--f);color:var(--muted)}
+.counter b{color:var(--ink);font-weight:600}
+
+/* customise panel */
+details.custom{margin-top:3rem;border-radius:22px;background:#fff;box-shadow:0 0 0 1px var(--line);max-width:48rem;margin-inline:auto}
+details.custom summary{list-style:none;cursor:pointer;padding:1.1rem 1.3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+details.custom summary::-webkit-details-marker{display:none}
+details.custom summary span{font:600 1rem var(--f);letter-spacing:-.01em}
+details.custom summary small{font:400 .85rem var(--f);color:var(--muted);display:block}
+details.custom summary::after{content:"+";font:300 1.5rem var(--f);color:var(--muted);line-height:1}
+details.custom[open] summary::after{content:"–"}
+.panel{padding:0 1.3rem 1.3rem;display:grid;gap:1.3rem}
+.grp{display:grid;gap:.55rem}
+.grp .n{font:600 .78rem var(--f);letter-spacing:.02em;color:var(--muted)}
+.inputs{display:grid;grid-template-columns:1.3fr 1fr;gap:.5rem}
+@media (max-width:420px){.inputs{grid-template-columns:1fr}}
+input{font:500 .98rem var(--f);padding:.75rem .95rem;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%;min-width:0}
+input::placeholder{color:#a1a1a6}
+input:focus{outline:none;border-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.chip{font:500 .84rem var(--f);padding:.45rem .8rem;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer;transition:transform .15s}
+.chip:active{transform:scale(.96)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.style{display:grid;gap:.1rem;justify-items:start;border-radius:12px;padding:.5rem .75rem}
+.chip.style small{font-weight:400;opacity:.7;font-size:.72rem}
+.chip.style i{width:100%;height:4px;border-radius:3px;display:block;background:var(--sw);box-shadow:0 0 0 1px var(--line)}
+.feats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.4rem}
+.feat{font:500 .85rem var(--f);padding:.55rem .65rem;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer;text-align:left;display:flex;align-items:center;gap:.5rem}
+.feat b{width:18px;height:18px;border-radius:50%;border:1.5px solid #c7c7cc;display:grid;place-items:center;font-size:.65rem;color:#fff;flex:none}
+.feat[aria-pressed="true"]{border-color:var(--ink)}
+.feat[aria-pressed="true"] b{background:var(--ink);border-color:var(--ink)}
+.feat[aria-pressed="true"] b::after{content:"✓"}
+.extras{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+@media (max-width:420px){.extras{grid-template-columns:1fr}}
+.up{font:500 .85rem var(--f);padding:.6rem .8rem;border-radius:12px;border:1px dashed #c7c7cc;color:var(--ink2);display:flex;align-items:center;gap:.5rem;cursor:pointer;min-width:0}
+.up input{display:none}
+.up span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.col{font:500 .85rem var(--f);padding:.35rem .8rem;border-radius:12px;border:1px solid var(--line);display:flex;align-items:center;gap:.5rem}
+.col input{width:36px;height:28px;border:0;background:none;padding:0;cursor:pointer}
+.wish textarea{background:#fff;border:1px solid var(--line);min-height:3.4rem;font-size:.95rem;padding:.7rem .9rem}
+.chip:focus-visible,.feat:focus-visible,.cta:focus-visible,.go:focus-visible,.mini:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* generated site (inside phones) */
+.s{text-align:left;--p:#b24a2a;--p2:#f6e7df;--p2tx:#222;--bgc:#ffffff;--tx:#141414;--r:22px;--hf:var(--f);--hw:700;--ls:-.03em;--up:none;min-height:100%;background:var(--bgc);color:var(--tx);font-family:var(--f);padding-bottom:92px;position:relative;-webkit-font-smoothing:antialiased}
+.s .top{display:flex;justify-content:space-between;align-items:center;padding:14px 26px 0;font:600 .72rem var(--f);position:absolute;left:0;right:0;top:0;z-index:3;color:#fff;mix-blend-mode:difference}
+.s .top i{font-style:normal;letter-spacing:-.02em}
+.s .nav{display:flex;justify-content:space-between;align-items:center;padding:46px 18px 0;position:absolute;left:0;right:0;top:0;z-index:3;color:#fff}
+.s .nm{display:flex;align-items:center;gap:8px;min-width:0;font:600 .9rem var(--hf);font-weight:var(--hw);letter-spacing:-.01em;text-transform:var(--up)}
+.s .nm span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.s .logo{width:30px;height:30px;border-radius:10px;background:rgba(255,255,255,.92);color:#111;display:inline-grid;place-items:center;font:700 .62rem var(--f);flex:none;backdrop-filter:blur(8px)}
+.s .nav i{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);display:grid;place-items:center;flex:none}
+.s .nav i::before{content:"";width:16px;height:2px;background:#fff;box-shadow:0 5px 0 #fff,0 -5px 0 #fff;display:block;border-radius:2px}
+.s .langs{font:700 .6rem var(--f);letter-spacing:.06em;margin-left:auto;margin-right:10px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);padding:.35rem .5rem;border-radius:999px}
+.s .art{position:relative;background:
+  radial-gradient(90% 60% at 10% 0%,color-mix(in srgb,var(--p) 40%,white) 0%,transparent 55%),
+  radial-gradient(70% 60% at 100% 100%,color-mix(in srgb,var(--p) 50%,black) 0%,transparent 60%),
+  radial-gradient(50% 45% at 75% 25%,rgba(255,255,255,.35),transparent 65%),
+  radial-gradient(40% 40% at 30% 80%,color-mix(in srgb,var(--p) 70%,#ffb347) 0%,transparent 60%),var(--p)}
+.s .art::after{content:"";position:absolute;inset:0;border-radius:inherit;opacity:.18;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.s .hero2{margin:0;border-radius:0 0 var(--r) var(--r);padding:120px 20px 24px;color:#fff;min-height:340px;position:relative;overflow:hidden;display:grid;align-content:end;gap:10px}
+.s .hero2::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.55));pointer-events:none}
+.s .hero2>*{position:relative;z-index:1}
+.s .hero2 .badge{justify-self:start;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);color:#fff;font:600 .68rem var(--f);padding:.35rem .65rem;border-radius:999px}
+.s .hero2 h3{font:var(--hw) 2rem/1.02 var(--hf);margin:0;letter-spacing:var(--ls);text-transform:var(--up);text-shadow:0 2px 20px rgba(0,0,0,.25)}
+.s .hero2 p{font-size:.86rem;opacity:.92;line-height:1.45;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.s .hero2 .row{display:flex;gap:8px;align-items:center;margin-top:6px}
+.s .hero2 span.b{display:inline-block;background:#fff;color:#111;font:600 .82rem var(--f);padding:.65rem 1.05rem;border-radius:999px}
+.s .hero2 span.b2{display:inline-block;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);color:#fff;font:600 .82rem var(--f);padding:.65rem 1rem;border-radius:999px}
+.s .tags{display:flex;gap:6px;padding:16px 20px 0;overflow:hidden;flex-wrap:wrap}
+.s .tags span{font:600 .7rem var(--f);padding:.4rem .7rem;border-radius:999px;background:color-mix(in srgb,var(--tx) 6%,transparent);color:var(--tx);white-space:nowrap}
+.s .tags span:first-child{background:var(--tx);color:var(--bgc)}
+.s .sec{padding:26px 20px 0}
+.s .sec h4{font:var(--hw) 1.15rem var(--hf);letter-spacing:var(--ls);text-transform:var(--up);margin:0 0 .8rem;display:flex;justify-content:space-between;align-items:baseline}
+.s .sec h4 small{font:600 .72rem var(--f);letter-spacing:0;text-transform:none;color:var(--p)}
+.s .cards{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px 4px;scroll-snap-type:x mandatory}
+.s .cards::-webkit-scrollbar{display:none}
+.s .card{flex:0 0 150px;scroll-snap-align:start;display:grid;gap:6px}
+.s .card .img{aspect-ratio:1/1.05;border-radius:calc(var(--r) - 6px);position:relative;overflow:hidden;box-shadow:0 14px 30px -16px color-mix(in srgb,var(--p) 70%,black)}
+.s .card .img b{position:absolute;left:10px;top:10px;background:rgba(255,255,255,.9);color:#111;font:600 .62rem var(--f);padding:.25rem .5rem;border-radius:999px}
+.s .card .img::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;left:15%;top:18%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.75),rgba(255,255,255,.08) 55%,transparent 70%);filter:blur(1px)}
+.s .card.v2 .img{filter:hue-rotate(18deg) saturate(1.1)}.s .card.v3 .img{filter:brightness(.78)}.s .card.v4 .img{filter:hue-rotate(-18deg) brightness(1.05)}
+.s .card .t{font:600 .86rem var(--f);letter-spacing:-.01em;line-height:1.2}
+.s .card small{display:block;opacity:.55;font-size:.72rem;font-weight:500}
+.s .card .pr{font:700 .84rem var(--f);color:var(--tx)}
+.s .list{display:grid}
+.s .item{display:flex;align-items:center;gap:12px;padding:.65rem 0;border-bottom:1px solid color-mix(in srgb,var(--tx) 8%,transparent);font-size:.9rem}
+.s .item i{width:44px;height:44px;border-radius:14px;flex:none;position:relative;overflow:hidden}
+.s .item i::before{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.7),transparent 65%)}
+.s .item div{flex:1;min-width:0}
+.s .item small{display:block;opacity:.55;font-size:.74rem}
+.s .item b{font-weight:600;white-space:nowrap}
+.s .info{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.s .info div{background:color-mix(in srgb,var(--tx) 5%,transparent);border-radius:calc(var(--r) - 6px);padding:12px;font-size:.78rem;line-height:1.35}
+.s .info b{display:block;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin-bottom:4px;font-weight:700}
+.s .avis{background:color-mix(in srgb,var(--tx) 5%,transparent);border-radius:var(--r);padding:1rem;font-size:.86rem;display:grid;gap:8px;line-height:1.45}
+.s .avis .who{display:flex;align-items:center;gap:10px;font:600 .8rem var(--f)}
+.s .avis .who i{width:32px;height:32px;border-radius:50%;background:var(--p);color:#fff;display:grid;place-items:center;font:700 .66rem var(--f);font-style:normal}
+.s .avis .who small{display:block;color:#e6a100;font-size:.72rem;letter-spacing:.05em;font-weight:700}
+.s .btns{position:absolute;left:0;right:0;bottom:0;display:flex;gap:.5rem;padding:16px 18px 24px;background:linear-gradient(transparent,var(--bgc) 40%)}
+.s .btns span{flex:1;text-align:center;font:600 .86rem var(--f);padding:.9rem;border-radius:999px;background:color-mix(in srgb,var(--tx) 7%,transparent);color:var(--tx)}
+.s .btns span:last-child{background:var(--tx);color:var(--bgc);box-shadow:0 14px 30px -14px var(--tx)}
+.s .map{height:110px;border-radius:var(--r);background:
+  linear-gradient(color-mix(in srgb,var(--tx) 9%,transparent) 1px,transparent 1px) 0 0/22px 22px,
+  linear-gradient(90deg,color-mix(in srgb,var(--tx) 9%,transparent) 1px,transparent 1px) 0 0/22px 22px,
+  color-mix(in srgb,var(--tx) 4%,transparent);position:relative;overflow:hidden}
+.s .map::before{content:"";position:absolute;left:-10%;top:45%;width:120%;height:14px;background:color-mix(in srgb,var(--tx) 12%,transparent);transform:rotate(-12deg)}
+.s .map::after{content:"";position:absolute;width:16px;height:16px;border-radius:50% 50% 50% 0;transform:translate(-50%,-50%) rotate(-45deg);background:var(--p);left:50%;top:48%;box-shadow:0 0 0 5px color-mix(in srgb,var(--p) 25%,transparent)}
+.s .map span{position:absolute;left:12px;bottom:10px;font:600 .72rem var(--f);background:var(--bgc);color:var(--tx);padding:.35rem .6rem;border-radius:999px}
+.s .gal{display:grid;grid-template-columns:2fr 1fr;grid-auto-rows:88px;gap:6px}
+.s .gal i{border-radius:calc(var(--r) - 8px);display:block;position:relative;overflow:hidden}
+.s .gal i:first-child{grid-row:span 2}
+.s .gal i::before{content:"";position:absolute;inset:20%;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.65),transparent 65%)}
+.s .gal i:nth-child(2){filter:hue-rotate(20deg) brightness(.9)}.s .gal i:nth-child(3){filter:brightness(.7)}.s .gal i:nth-child(4){filter:hue-rotate(-20deg)}.s .gal i:nth-child(5){filter:brightness(1.1) saturate(.8)}
+.s .shop{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.s .shop div{display:grid;gap:4px;font-size:.8rem}
+.s .shop i{display:block;aspect-ratio:1;border-radius:calc(var(--r) - 6px);position:relative;overflow:hidden}
+.s .shop i::before{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.7),transparent 65%)}
+.s .shop div:last-child i{filter:brightness(.75) hue-rotate(15deg)}
+.s .shop b{font-weight:600}
+.s .shop em{font-style:normal;justify-self:start;background:var(--tx);color:var(--bgc);font-weight:600;padding:.3rem .7rem;border-radius:999px;font-size:.7rem;margin-top:2px}
+.s .book{background:color-mix(in srgb,var(--tx) 5%,transparent);border-radius:var(--r);padding:1rem;display:grid;gap:.7rem}
+.s .book .days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:.7rem;font-weight:600}
+.s .book .days span{padding:.45rem 0;border-radius:10px;background:var(--bgc);color:var(--tx)}
+.s .book .days span.on{background:var(--tx);color:var(--bgc)}
+.s .book .slots{display:flex;gap:5px;flex-wrap:wrap;font-size:.72rem;font-weight:600}
+.s .book .slots span{padding:.4rem .7rem;border-radius:999px;background:var(--bgc);color:var(--tx)}
+.s .book .slots span.on{background:var(--p);color:#fff}
+.s .vid{aspect-ratio:16/9;border-radius:var(--r);display:grid;place-items:center;color:#fff;overflow:hidden}
+.s .vid i{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;color:#111;font-size:.9rem;font-style:normal;box-shadow:0 10px 30px rgba(0,0,0,.3);position:relative;z-index:1}
+.s .chat{position:absolute;right:16px;bottom:92px;width:50px;height:50px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-weight:700;font-size:.8rem;box-shadow:0 10px 24px rgba(0,0,0,.25);z-index:2}
+.s .snd{position:absolute;left:16px;bottom:92px;width:44px;height:44px;border-radius:50%;background:var(--bgc);color:var(--tx);display:grid;place-items:center;font-size:1rem;box-shadow:0 10px 24px rgba(0,0,0,.2);z-index:2}
+.s .qr{display:flex;gap:14px;align-items:center;font-size:.84rem;font-weight:500;background:color-mix(in srgb,var(--tx) 5%,transparent);border-radius:var(--r);padding:12px}
+.s .qr canvas{width:64px;height:64px;border-radius:10px;background:#fff;flex:none}
+.s .checkout{background:color-mix(in srgb,var(--tx) 5%,transparent);border-radius:var(--r);padding:14px;display:grid;gap:8px}
+.s .line{display:flex;justify-content:space-between;font-size:.82rem;opacity:.85}
+.s .line.tot{border-top:1px solid color-mix(in srgb,var(--tx) 15%,transparent);padding-top:8px;font-weight:700;opacity:1;font-size:.95rem}
+.s .apay{background:#000;color:#fff;border-radius:999px;text-align:center;padding:.75rem;font:600 .9rem var(--f);letter-spacing:-.02em}
+.s.st-street .apay,.s.st-neon .apay{background:#fff;color:#000}
+.s .pay{display:flex;gap:6px;font-size:.7rem;font-weight:600;flex-wrap:wrap}
+.s .pay span{border:1px solid color-mix(in srgb,var(--tx) 18%,transparent);border-radius:8px;padding:.3rem .6rem}
+.s .news{display:flex;gap:6px}
+.s .news span{flex:1;border:1px solid color-mix(in srgb,var(--tx) 18%,transparent);border-radius:999px;padding:.6rem .9rem;font-size:.8rem;opacity:.7}
+.s .news b{background:var(--tx);color:var(--bgc);border-radius:999px;padding:.6rem .95rem;font-size:.8rem;font-weight:600}
+.s .new{animation:pop .5s both}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.s.st-chic{--hf:"Instrument Serif",Georgia,serif;--hw:400;--ls:-.01em;--r:10px;--bgc:#f8f5ee;--tx:#1b1a17}
+.s.st-chic .hero2 h3{font-size:2.5rem}
+.s.st-chic .sec h4{font-size:1.4rem}
+.s.st-street{--r:4px;--up:uppercase;--ls:-.04em;--hw:800;--bgc:#0d0d0d;--tx:#ffffff;--p2tx:#f4f4f4}
+.s.st-street .hero2{border-radius:0}
+.s.st-street .hero2 h3{font-size:2.3rem;line-height:.95}
+.s.st-nature{--r:28px;--bgc:#f3f7ee;--tx:#1c2a1e;--hw:600}
+.s.st-neon{--r:18px;--bgc:#09061a;--tx:#f4f0ff;--p2tx:#f4f0ff}
+.s.st-neon .hero2{box-shadow:0 30px 60px -20px var(--p)}
+.s.st-neon .card .img,.s.st-neon .shop i{box-shadow:0 0 30px -6px var(--p)}
+.s.st-mini{--r:12px;--bgc:#ffffff;--tx:#111111;--hw:600;--ls:-.04em}
+.s.st-mini .hero2{color:var(--tx);background:var(--bgc);min-height:300px;padding-top:110px}
+.s.st-mini .hero2.art{background:#f4f4f5}
+.s.st-mini .hero2::before,.s.st-mini .hero2.art::after{display:none}
+.s.st-mini .hero2 h3,.s.st-mini .hero2 p{text-shadow:none}
+.s.st-mini .hero2 .badge{background:#fff;color:#111;border-color:#e5e5ea}
+.s.st-mini .hero2 span.b{background:var(--tx);color:var(--bgc)}
+.s.st-mini .hero2 span.b2{color:var(--tx);border-color:#d6d6db;background:#fff}
+.s.st-mini .nav,.s.st-mini .top{color:var(--tx);mix-blend-mode:normal}
+.s.st-mini .nav i{background:#fff;border:1px solid #e5e5ea}.s.st-mini .nav i::before{background:#111;box-shadow:0 5px 0 #111,0 -5px 0 #111}
+.s.st-mini .logo{background:#111;color:#fff}
+.s.st-mini .nm span:last-child{text-shadow:none}
+.s.fx3d .hero2{animation:tilt3d 6s ease-in-out infinite;transform-style:preserve-3d}
+@keyframes tilt3d{0%,100%{transform:perspective(600px) rotateY(-8deg) rotateX(3deg)}50%{transform:perspective(600px) rotateY(8deg) rotateX(-3deg)}}
+.s.holo .hero2{background-image:linear-gradient(120deg,var(--p),#7fe0bd,#f2c96b,#c026d3,var(--p));background-size:300% 300%;animation:holo 5s linear infinite;box-shadow:0 0 40px rgba(192,38,211,.45)}
+@keyframes holo{to{background-position:300% 0}}
+.s.anim .sec{animation:pop .7s both}
+.s.anim .sec:nth-of-type(2){animation-delay:.15s}.s.anim .sec:nth-of-type(3){animation-delay:.3s}.s.anim .sec:nth-of-type(4){animation-delay:.45s}
+.s.anim .btns span:last-child{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.05)}}
+.s .parts{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.s .parts i{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;opacity:.6;animation:floatp 6s linear infinite}
+@keyframes floatp{from{transform:translateY(20px);opacity:0}20%{opacity:.7}to{transform:translateY(-140px);opacity:0}}
+.s .hero2.ph{background-image:var(--photo);background-size:cover;background-position:center}
+.s .hero2.ph::after{display:none}
+.s .gal i.ph{background:var(--photo) center/cover;filter:none}
+.s .gal i.ph::before{display:none}
+.g{text-align:left;background:#fff;color:#111;min-height:100%;padding:56px 16px 20px;font-family:var(--f)}
+.g .gl{font:700 1.3rem var(--f);color:#4285f4;margin-bottom:8px}
+.g .gq{border:1px solid #ddd;border-radius:999px;padding:.6rem .9rem;font-size:.85rem;color:#333;margin-bottom:14px}
+.g .gr{border-radius:14px;padding:10px;margin-bottom:10px;border:1px solid #eee}
+.g .gr b{display:block;font-size:.95rem}
+.g .gr small{color:#777;display:block;font-size:.75rem}
+.g .gr .st{color:#e6a100;font-size:.75rem;font-weight:600}
+.g .tag{display:inline-block;margin:6px 0 0;font:600 .7rem var(--f);padding:.25rem .6rem;border-radius:999px;border:0}
+.g .tag.no{background:#fdecee;color:#d7263d}
+.g .tag.ok{background:#e8f0fe;color:#1a73e8}
+.g .gr.mine.no{background:#fff5f6;border-color:#f3c4c9}
+.g .gr.mine.ok{background:#eefaf4;border-color:#9fd9bd;box-shadow:0 0 0 3px #9fd9bd55}
+.g .note{font-size:.8rem;color:#555;text-align:center;margin-top:14px;font-weight:600}
+@media (prefers-reduced-motion:reduce){.s .new,.s.fx3d .hero2,.s.holo .hero2,.s.anim .sec,.s .parts i{animation:none}}
+
+/* toasts, fullscreen, fab */
+.toast{position:fixed;left:20px;right:20px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:40;background:rgba(255,255,255,.96);color:var(--ink);border-radius:16px;padding:11px 13px;display:flex;gap:10px;align-items:center;font:400 .8rem var(--f);box-shadow:0 14px 40px rgba(0,0,0,.18),0 0 0 1px var(--line);animation:toastin .5s both,toastout .5s 3.2s both;max-width:420px;margin-inline:auto;backdrop-filter:blur(10px)}
+.toast i{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font:700 .7rem var(--f);flex:none;color:#fff;font-style:normal}
+.toast b{display:block;font-size:.82rem;font-weight:600}
+@keyframes toastin{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes toastout{to{opacity:0;transform:translateY(30px)}}
+.fs{position:fixed;inset:0;z-index:50;background:#000;display:grid}
+.fs .inner{height:100%;width:100%}
+.fs .s{max-width:480px;margin-inline:auto;min-height:100%}
+.fs .s .nav{padding-top:calc(16px + env(safe-area-inset-top,0px))}
+.fs .s .btns{max-width:480px;margin-inline:auto}
+.fs .x{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:51;font:600 .85rem var(--f);background:#fff;color:var(--ink);border:0;border-radius:999px;padding:.6rem 1rem;cursor:pointer}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;font:600 .85rem var(--f);background:var(--ink);color:#fff;border:0;border-radius:999px;padding:.8rem 1.1rem;box-shadow:0 10px 30px rgba(0,0,0,.25);cursor:pointer;display:none;align-items:center;gap:.5rem}
+.fab.show{display:flex;animation:rise .3s both}
+.fab b{background:var(--honey);color:var(--ink);border-radius:999px;padding:.1rem .5rem;font-size:.8rem}
+#confetti{display:none}
+
+/* result */
+.result{text-align:left;margin:3rem auto 0;max-width:48rem;display:grid;gap:1.1rem;background:#fff;border-radius:22px;padding:1.6rem;box-shadow:0 0 0 1px var(--line)}
+.result h3{font:600 1.35rem/1.2 var(--f);margin:0;letter-spacing:-.025em}
+.price{font:600 2.8rem/1 var(--f);letter-spacing:-.04em;display:inline}
+.price-l{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
+.price-l small{font:400 .92rem var(--f);color:var(--muted)}
+.cmp{display:grid;gap:0;border-top:1px solid var(--line)}
+.cmp div{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:center;font:400 .92rem var(--f);color:var(--muted);padding:.55rem 0;border-bottom:1px solid var(--line)}
+.cmp i{display:none}
+.cmp b{font-weight:500;color:var(--ink2)}
+.cmp .me{color:var(--ink)}
+.cmp .me span{font-weight:600}
+.cmp .me b{font-weight:600}
+.cmp small{color:var(--muted);font-weight:400}
+.result p{color:var(--muted)}
+.cta{font:600 .98rem var(--f);padding:.95rem 1.2rem;border-radius:14px;border:0;background:var(--honey);color:var(--ink);cursor:pointer;text-align:center;text-decoration:none;display:block}
+.cta:hover{background:var(--honey2)}
+.msg{background:var(--bg2);border-radius:12px;padding:.85rem .95rem;font-size:.92rem;user-select:all;color:var(--ink2)}
+.small{font-size:.82rem;color:var(--muted)}
+
+/* sections */
+section{padding-block:7rem 0;max-width:68rem;margin-inline:auto}
+.center{text-align:center;display:grid;justify-items:center}
+.center .lead{margin-inline:auto}
+.band{margin-inline:-22px;padding:6rem 22px;background:var(--bg2);margin-top:7rem}
+.band section{padding-top:0}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-top:3rem;width:100%}
+.ex{display:grid;gap:1rem;justify-items:center}
+.ex .phone{width:100%;max-width:270px;box-shadow:0 0 0 1px #2a2a2a,0 30px 60px -30px rgba(0,0,0,.35),inset 0 0 0 2px #2d2d2f}
+.ex .cap{font:400 .85rem var(--f);color:var(--muted);text-align:center}
+.ex .cap b{display:block;color:var(--ink);font-weight:600;font-size:.98rem}
+@media (max-width:860px){.gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;padding:.5rem 22px 1rem;margin-inline:-22px;scrollbar-width:none;width:auto}.gallery::-webkit-scrollbar{display:none}.gallery .ex{flex:0 0 72%;scroll-snap-align:center}}
+.who{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-top:3rem;width:100%;text-align:left}
+.who.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:860px){.who,.who.three{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){.who,.who.three{grid-template-columns:1fr}}
+.who div{background:var(--bg2);border-radius:18px;padding:1.2rem;display:grid;gap:.3rem;align-content:start}
+.who strong{font:600 1.02rem var(--f);letter-spacing:-.015em}
+.who p{color:var(--muted);font-size:.9rem;line-height:1.5}
+.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.2rem 2.5rem;margin-top:3.5rem;width:100%;text-align:left}
+@media (max-width:760px){.wall{grid-template-columns:1fr 1fr;gap:1.6rem 1.2rem}}
+@media (max-width:460px){.wall{grid-template-columns:1fr}}
+.tile{display:grid;gap:.25rem;align-content:start;padding-top:1rem;border-top:1px solid var(--line)}
+.tile strong{font:600 1rem var(--f);letter-spacing:-.015em}
+.tile p{color:var(--muted);font-size:.9rem;line-height:1.5}
+.tile.big{grid-column:1/-1;border-top:0;padding:1.4rem 1.6rem;background:var(--ink);color:#fff;border-radius:18px;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.tile.big strong{font-size:1.25rem}
+.tile.big p{color:rgba(255,255,255,.7);font-size:.95rem}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem;margin-top:3.5rem;width:100%;text-align:left}
+@media (max-width:760px){.steps{grid-template-columns:1fr 1fr}}
+.step{display:grid;gap:.4rem;align-content:start;padding-top:1rem;border-top:1px solid var(--ink)}
+.step b{font:600 .78rem var(--f);color:var(--honey2);letter-spacing:.04em}
+.step strong{font:600 1.15rem var(--f);letter-spacing:-.02em}
+.step p{color:var(--muted);font-size:.92rem}
+.plans{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:1rem;margin-top:3rem;width:100%;text-align:left}
+@media (max-width:760px){.plans{grid-template-columns:1fr}}
+.plan{border-radius:22px;padding:1.6rem;background:#fff;box-shadow:0 0 0 1px var(--line);display:grid;gap:.5rem;align-content:start}
+.plan>b{font:500 .8rem var(--f);color:var(--muted)}
+.plan.main{box-shadow:0 0 0 2px var(--honey)}
+.plan .n{font:600 2.6rem/1 var(--f);letter-spacing:-.04em}
+.plan.main .n{font-size:3.6rem}
+.plan .n small{font:400 .9rem var(--f);color:var(--muted);letter-spacing:0}
+.plan ul{margin:.6rem 0 0;padding:0;list-style:none;font-size:.93rem;display:grid;gap:.45rem;color:var(--ink2)}
+.plan li::before{content:"✓";display:inline-block;width:1.3rem;color:var(--honey2)}
+.plan .cta{margin-top:.9rem}
+.faq{max-width:44rem;margin-inline:auto}
+.faq h2{text-align:center;margin-bottom:1.5rem}
+.faq details{border-bottom:1px solid var(--line);padding:1rem 0}
+.faq summary{font:600 1.02rem var(--f);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--honey2);font-weight:300;font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--muted);padding-top:.6rem}
+.close{margin:7rem -22px 0;padding:6rem 22px 2.5rem;background:var(--ink);color:#fff;text-align:center}
+.close h2{color:#fff}
+.close .bee.big{width:72px;height:72px;margin:0 auto 1.2rem;display:block}
+.close p{color:rgba(255,255,255,.65);max-width:30rem;margin-inline:auto}
+.close .cta{display:inline-block;background:var(--honey);color:var(--ink);margin-top:1.6rem;padding:1rem 1.8rem}
+.close .cta:hover{background:var(--honey2)}
+footer{padding:2.5rem 0 0;color:rgba(255,255,255,.5);font-size:.82rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;max-width:68rem;margin-inline:auto;border-top:1px solid rgba(255,255,255,.12);margin-top:5rem}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#top"><svg class="bee" viewBox="0 0 100 100" aria-hidden="true"><path d="M34 18 Q45 48 54 27 Q63 48 74 18" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="58" cy="60" r="17" fill="#F5B800"/>
+  <path d="M51 44 V76 M65 44 V76" stroke="#111" stroke-width="6"/>
+  <circle cx="58" cy="60" r="17" fill="none" stroke="#111" stroke-width="6"/>
+  <path d="M41 43 H93" stroke="#111" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="22" cy="64" r="10" fill="#F5B800"/>
+  <path d="M12 64 H32 A10 10 0 1 0 27 72.7" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/></svg><span>web<em>five</em></span></a>
+  <nav><a href="#pourqui">Pour qui</a><a href="#exemples">Exemples</a><a href="#options">Options</a><a href="#prix">Prix</a><a class="btn" href="https://wa.me/33602793261" target="_blank" rel="noopener">WhatsApp</a></nav>
+</header>
+
+<div class="wrap">
+<div class="hero" id="top">
+  <span class="tag"><i></i>Démo en direct, rien n'est enregistré</span>
+  <h1>Ton site en une phrase.<br><span>Livré en 5 jours.</span></h1>
+  <p class="lead">Commerce, e-commerce, entrepreneur, marque, artisan, coach, association. Décris ton projet, regarde ton site se construire, puis je le réalise pour de vrai. 900 €, une seule fois. Maquette gratuite avant de payer.</p>
+  <div class="say">
+    <textarea id="say" placeholder="Je suis coiffeur à Lille, style street, je veux que les gens réservent en ligne…"></textarea>
+    <button class="go" type="button" id="sayb">Construire mon site</button>
+    <div class="log" id="log"></div>
+  </div>
+  <div class="examples"><span>Essayer :</span><button type="button" data-say="Je suis coiffeur à Lille, style street, je veux que les gens réservent en ligne et m'écrivent sur WhatsApp">Coiffeur à Lille</button><button type="button" data-say="Ma pizzeria Luigi à Lyon, chic, avec le menu en QR code, les avis Google et la commande en ligne">Pizzeria à Lyon</button><button type="button" data-say="Ma boutique en ligne Maison Lila, style chic, je vends des bougies avec paiement par carte et Apple Pay, livraison partout en France">Boutique en ligne</button><button type="button" data-say="Je suis entrepreneur à Paris, je lance ma startup Kopa, style minimal, bleu, prise de rendez-vous en ligne">Entrepreneur</button><button type="button" data-say="Coach sportif à Paris, minimal, bleu, réservation en ligne et vidéo de présentation">Coach sportif</button></div>
+
+  <div class="stage" id="stage">
+    <div class="phone"><div class="screen"><div class="inner" id="screen"></div></div></div>
+    <div class="seg">
+      <button class="mini" type="button" data-ba="before">Sans site</button>
+      <button class="mini" type="button" data-ba="after" aria-pressed="true">Avec ton site</button>
+      <button class="mini" type="button" id="fullb">Plein écran</button>
+    </div>
+    <p class="counter" id="counter">Ton site : <b>0</b> option ajoutée</p>
+  </div>
+</div>
+
+<details class="custom" id="custom">
+  <summary><span>Personnaliser <small>projet, style, options, photo, couleur</small></span></summary>
+  <div class="panel">
+    <div class="grp"><span class="n">Projet</span>
+      <div class="inputs"><input id="nom" placeholder="Nom (Pizzeria Luigi, Nova Wear…)" autocomplete="off"><input id="ville" placeholder="Ville" autocomplete="off"></div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="grp"><span class="n">Style</span><div class="chips" id="styles"></div></div>
+    <div class="grp"><span class="n">Options</span><div class="feats" id="feats"></div></div>
+    <div class="grp wish"><span class="n">Demande spéciale</span><textarea id="wish" placeholder="Un hologramme de mon logo, un jeu pour gagner une pizza, mon menu en réalité augmentée…"></textarea></div>
+    <div class="extras">
+      <label class="up"><input type="file" id="photo" accept="image/*"><b>+</b><span id="photol">Ajouter ma photo</span></label>
+      <label class="col"><input type="color" id="color" value="#b24a2a">Couleur <span id="colr" class="small">(auto)</span></label>
+    </div>
+  </div>
+</details>
+
+<div class="result" id="result">
+  <h3 id="rtitle">Ce site, c'est le tien.</h3>
+  <div class="price-l"><span class="price">900 €</span><small>une seule fois, toutes les options incluses</small></div>
+  <div class="cmp">
+    <div><span>Agence web</span><i></i><b>3 000 €+</b></div>
+    <div><span>Freelance</span><i></i><b>1 650 €</b></div>
+    <div><span>Abonnement sur 3 ans</span><i></i><b>3 564 €</b></div>
+    <div class="me"><span>Webfive</span><i></i><b>900 €</b></div>
+  </div>
+  <p>Tout ce que tu viens d'ajouter, je le réalise : réservation, boutique, 3D, animations, et tout ce que tu demandes en plus. Avec tes photos, tes textes, ton nom de domaine.</p>
+  <a class="cta" id="wa" href="https://wa.me/33602793261" target="_blank" rel="noopener">Demander ma maquette gratuite</a>
+  <p class="small">Sur WhatsApp, le message est déjà prêt :</p>
+  <div class="msg" id="rmsg">Salut, je veux mon site.</div>
+</div>
+
+<button class="fab" type="button" id="fab">Voir mon site <b id="fabn">0</b></button>
+</div>
+
+<div class="band" id="exemples">
+<section class="center">
+  <h2>Trois projets, trois styles.</h2>
+  <p class="lead">Chaque site est dessiné pour le projet : ses couleurs, sa typographie, ses boutons.</p>
+  <div class="gallery" id="gallery"></div>
+</section>
+</div>
+
+<section class="center" id="pourqui">
+  <h2>Pour tout le monde. Vraiment.</h2>
+  <p class="lead">Que tu vendes des pizzas, des bougies ou du conseil, ton site est fait pour ton métier.</p>
+  <div class="who">
+    <div><strong>Commerce</strong><p>Restaurant, coiffeur, garage, institut, boulangerie. Horaires, carte, réservation, avis Google.</p></div>
+    <div><strong>E-commerce</strong><p>Boutique en ligne complète : produits, panier, paiement par carte, Apple Pay, PayPal, livraison.</p></div>
+    <div><strong>Entrepreneur</strong><p>Startup, consultant, auto-entrepreneur. Une offre claire, un rendez-vous en un clic, devis en ligne.</p></div>
+    <div><strong>Marque</strong><p>Vêtements, bijoux, cosmétiques. Collection, précommandes, Instagram, boutique.</p></div>
+    <div><strong>Artisan</strong><p>Plombier, électricien, peintre. Devis gratuit, urgence, avis, zone d'intervention.</p></div>
+    <div><strong>Coach et freelance</strong><p>Sport, bien-être, photo, design. Réservation, vidéo, paiement des séances.</p></div>
+    <div><strong>Association</strong><p>Événements, adhésion en ligne, dons, espace membres.</p></div>
+  </div>
+</section>
+
+<section class="center" id="paiement">
+  <h2>Encaisse en ligne, dès le premier jour.</h2>
+  <p class="lead">Pour vendre des produits, des séances ou des abonnements, le paiement est intégré à ton site.</p>
+  <div class="who three">
+    <div><strong>Carte, Apple Pay, PayPal</strong><p>Tes clients paient en 10 secondes, sur téléphone. Paiement en 3 fois possible.</p></div>
+    <div><strong>L'argent arrive sur ton compte</strong><p>Chaque vente est virée sur ton compte bancaire. Tu suis tout depuis ton téléphone.</p></div>
+    <div><strong>Sécurisé et sans abonnement caché</strong><p>Paiement protégé (Stripe ou PayPal). Tu ne paies qu'une petite commission par vente, comme partout.</p></div>
+  </div>
+</section>
+
+<section class="center" id="options">
+  <h2>Tout ce que tu veux, on le met.</h2>
+  <p class="lead">3D, animations, hologrammes, jeux. Si tu l'imagines, on le crée. La liste n'est pas fermée.</p>
+  <div class="wall" id="wall"></div>
+</section>
+
+<section class="center">
+  <h2>Tu m'écris lundi, tu es en ligne vendredi.</h2>
+  <div class="steps">
+    <div class="step"><b>JOUR 1</b><strong>Tu m'écris</strong><p>Ton projet, ta ville, 3 photos. Pas de textes ? Je les écris.</p></div>
+    <div class="step"><b>JOUR 2</b><strong>Maquette gratuite</strong><p>Tu reçois ton site sur ton téléphone. Sans engagement.</p></div>
+    <div class="step"><b>JOURS 3 ET 4</b><strong>On ajuste</strong><p>Couleurs, textes, options : autant de fois que tu veux.</p></div>
+    <div class="step"><b>JOUR 5</b><strong>En ligne</strong><p>Ton site est sur Google. Tu paies seulement maintenant.</p></div>
+  </div>
+</section>
+
+<section class="center" id="prix">
+  <h2>Un prix, pas de surprise.</h2>
+  <div class="plans">
+    <div class="plan main"><b>Création du site</b><div class="n">900 €<small> une seule fois</small></div>
+      <ul><li>Site complet, beau sur téléphone</li><li>Boutique en ligne et paiement si tu en as besoin</li><li>Toutes les options que tu veux</li><li>Textes et photos mis en place</li><li><strong>Logo offert</strong>, pour ton site et tes réseaux sociaux</li><li>Trouvable sur Google</li><li>Hébergement offert la première année</li><li>Maquette gratuite, paiement à la livraison</li></ul>
+      <a class="cta" href="https://wa.me/33602793261?text=Salut%2C%20je%20veux%20mon%20site." target="_blank" rel="noopener">Demander ma maquette gratuite</a></div>
+    <div class="plan"><b>Après la première année · Essentiel</b><div class="n">9 €<small>/mois</small></div><ul><li>Hébergement</li><li>Nom de domaine</li><li>Site toujours en ligne</li></ul></div>
+    <div class="plan"><b>Après la première année · Sérénité</b><div class="n">19 €<small>/mois</small></div><ul><li>Tout Essentiel</li><li>Modifications incluses</li><li>Réponse sous 48 h</li></ul></div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Questions fréquentes</h2>
+  <details><summary>Je n'ai pas de logo, tu le fais ?</summary><p>Oui, il est offert. Tu le reçois en version site, réseaux sociaux (TikTok, Instagram, Facebook) et impression.</p></details>
+  <details><summary>Je n'ai ni photos ni textes, c'est grave ?</summary><p>Non. 3 photos prises avec ton téléphone suffisent, j'écris les textes.</p></details>
+  <details><summary>Et si la maquette ne me plaît pas ?</summary><p>Tu ne paies rien. La maquette est gratuite et sans engagement.</p></details>
+  <details><summary>Pourquoi c'est moins cher qu'une agence ?</summary><p>Pas de bureaux, pas de commerciaux, pas de réunions. Je fais ton site directement, tout se passe par message.</p></details>
+  <details><summary>Une option n'est pas dans la liste ?</summary><p>Dis-la moi. 3D, hologramme, jeu, effet jamais vu : tout ce que tu demandes, je le crée.</p></details>
+</section>
+
+<div class="close">
+  <svg class="bee big" viewBox="0 0 100 100" aria-hidden="true"><path d="M34 18 Q45 48 54 27 Q63 48 74 18" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="58" cy="60" r="17" fill="#F5B800"/>
+  <path d="M51 44 V76 M65 44 V76" stroke="#fff" stroke-width="6"/>
+  <circle cx="58" cy="60" r="17" fill="none" stroke="#fff" stroke-width="6"/>
+  <path d="M41 43 H93" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="22" cy="64" r="10" fill="#F5B800"/>
+  <path d="M12 64 H32 A10 10 0 1 0 27 72.7" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg>
+  <h2>On fait ton site ?</h2>
+  <p>Écris-moi sur WhatsApp. Tu as ta maquette gratuite sous 48 h.</p>
+  <a class="cta" href="https://wa.me/33602793261?text=Salut%2C%20je%20veux%20mon%20site." target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+  <footer><span>Webfive · sites pour commerces, e-commerce, entrepreneurs, marques et artisans, partout en France</span><span>WhatsApp 06 02 79 32 61 · TikTok @webfive</span></footer>
+</div>
+
+<script>
+var T = {
+  resto:{label:"Restaurant",p:"#b24a2a",p2:"#f6e7df",tag:"La vraie cuisine maison",sub:"Sur place, à emporter ou en livraison.",btn:"Voir la carte",sec:"La carte",items:[["Margherita","Tomate, mozzarella, basilic","9 €"],["Reine","Jambon, champignons","11 €"],["4 fromages","Gorgonzola, chèvre, brie","12 €"],["Calzone","Pliée, garnie, dorée","12 €"]],avis:"« On y retourne chaque semaine, la pâte est incroyable. »",a1:"Appeler",a2:"Commander",hours:"7j/7 · 11h – 23h"},
+  coiffeur:{label:"Coiffeur / Barber",p:"#1f2937",p2:"#e8ecf2",tag:"Ta coupe, ton style",sub:"Coupe, barbe, soins. Sans attente.",btn:"Prendre rendez-vous",sec:"Prestations",items:[["Coupe homme","30 min","18 €"],["Coupe + barbe","45 min","25 €"],["Dégradé","30 min","20 €"],["Enfant","20 min","14 €"]],avis:"« Le meilleur barber du quartier, toujours nickel. »",a1:"Appeler",a2:"Réserver",hours:"Mar – Sam · 9h – 19h"},
+  garage:{label:"Garage",p:"#1d4ed8",p2:"#e3eafc",tag:"Ta voiture entre de bonnes mains",sub:"Entretien, pneus, diagnostic. Devis gratuit.",btn:"Demander un devis",sec:"Services",items:[["Vidange","Huile + filtre","dès 59 €"],["Plaquettes","Avant ou arrière","dès 89 €"],["Pneus","Montage + équilibrage","dès 45 €"],["Prépa contrôle","Avant le CT","39 €"]],avis:"« Honnête, rapide, prix annoncé à l'avance. »",a1:"Appeler",a2:"Devis",hours:"Lun – Ven · 8h – 18h"},
+  beaute:{label:"Institut / Ongles",p:"#b0486f",p2:"#fbe6ee",tag:"Un moment pour toi",sub:"Soins, épilation, ongles, regard.",btn:"Prendre rendez-vous",sec:"Soins",items:[["Pose gel","1 h","35 €"],["Soin visage","45 min","45 €"],["Épilation jambes","30 min","25 €"],["Regard","Cils + sourcils","30 €"]],avis:"« Accueil au top, je ressors toujours ravie. »",a1:"Appeler",a2:"Réserver",hours:"Mar – Sam · 10h – 19h"},
+  boulangerie:{label:"Boulangerie",p:"#8a5a2b",p2:"#f5ebdd",tag:"Le pain chaud dès 6h30",sub:"Tradition, viennoiseries, sandwichs.",btn:"Nos produits",sec:"Nos produits",items:[["Tradition","Levain maison","1,30 €"],["Croissant","Pur beurre","1,20 €"],["Sandwich","Du jour","4,50 €"],["Gâteau 6 pers.","Sur commande","18 €"]],avis:"« La meilleure baguette de la ville, sans débat. »",a1:"Appeler",a2:"Itinéraire",hours:"Tous les jours · 6h30 – 20h"},
+  artisan:{label:"Artisan / Dépannage",p:"#0e6b52",p2:"#e2f1eb",tag:"Dépannage rapide, prix clair",sub:"Intervention sous 24 h. Devis gratuit.",btn:"Demander un devis",sec:"Interventions",items:[["Fuite d'eau","Sous 2 h","dès 79 €"],["Chauffe-eau","Pose + dépannage","sur devis"],["Débouchage","Canalisations","dès 90 €"],["Urgence","Jour et nuit","24h/24"]],avis:"« Arrivé en 40 minutes, problème réglé. »",a1:"Appeler",a2:"Devis",hours:"7j/7 · urgences 24h/24"},
+  marque:{label:"Marque / Boutique",p:"#111111",p2:"#efefef",tag:"Nouvelle collection",sub:"Livraison 48 h. Retours gratuits.",btn:"Voir la collection",sec:"Best-sellers",items:[["Hoodie oversize","Coton bio, 3 couleurs","59 €"],["Tee-shirt logo","Coupe droite","29 €"],["Casquette","Brodée","25 €"],["Pack 2 tees","Noir + blanc","49 €"]],avis:"« Qualité au top, je recommande les yeux fermés. »",a1:"Instagram",a2:"Acheter",hours:"Boutique en ligne"},
+  ecommerce:{label:"E-commerce",p:"#0f766e",p2:"#dff5f1",tag:"Ta boutique, ouverte 24h/24",sub:"Paiement sécurisé, livraison partout en France.",btn:"Acheter",sec:"Nos produits",items:[["Pack découverte","3 produits","39 €"],["Best-seller","Édition limitée","59 €"],["Coffret cadeau","Emballage inclus","79 €"],["Abonnement","Chaque mois","19 €"]],avis:"« Commande reçue en 48 h, emballage parfait. »",a1:"Panier",a2:"Payer",hours:"Expédition sous 24 h"},
+  entrepreneur:{label:"Entrepreneur / Startup",p:"#1e3a8a",p2:"#e4e9f7",tag:"On lance ton projet.",sub:"Une offre claire, un rendez-vous en un clic.",btn:"Prendre rendez-vous",sec:"Nos offres",items:[["Audit gratuit","30 min","gratuit"],["Pack Lancement","Site + réseaux","490 €"],["Accompagnement","3 mois","sur devis"],["Formation","En ligne","149 €"]],avis:"« Pro, rapide, et ça a fait décoller mon activité. »",a1:"Appeler",a2:"Réserver",hours:"Lun – Ven · 9h – 18h"},
+  coach:{label:"Coach / Freelance",p:"#4338ca",p2:"#e7e6fb",tag:"Atteins tes objectifs",sub:"Accompagnement sur mesure, en visio ou sur place.",btn:"Réserver un appel",sec:"Offres",items:[["Appel découverte","20 min","gratuit"],["Séance 1 h","Visio ou sur place","60 €"],["Pack 5 séances","Suivi inclus","250 €"],["Programme 3 mois","Objectif défini","sur devis"]],avis:"« En 2 mois, des résultats que j'attendais depuis des années. »",a1:"Appeler",a2:"Réserver",hours:"Lun – Sam"},
+  asso:{label:"Association / Événement",p:"#c2410c",p2:"#fdeadf",tag:"Rejoins-nous",sub:"Nos actions, nos événements, comment aider.",btn:"Devenir membre",sec:"Prochains événements",items:[["Portes ouvertes","Tout public","15 nov."],["Tournoi solidaire","Inscriptions ouvertes","6 déc."],["Assemblée générale","Membres","18 janv."]],avis:"« Une asso qui fait vraiment bouger le quartier. »",a1:"Contact",a2:"Adhérer",hours:"Permanence le mercredi"},
+  autre:{label:"Autre projet",p:"#0e6b52",p2:"#e2f1eb",tag:"Bienvenue",sub:"Qualité, conseil et sourire.",btn:"Nous découvrir",sec:"Nos services",items:[["Conseil","Sur rendez-vous","gratuit"],["Service express","Sous 48 h","dès 20 €"],["Sur mesure","On en parle","sur devis"]],avis:"« Une équipe au top, je recommande. »",a1:"Appeler",a2:"Itinéraire",hours:"Lun – Sam · 9h – 19h"}
+};
+var KW=[["e-commerce|ecommerce|boutique en ligne|vends en ligne|dropship|vente en ligne","ecommerce"],["entrepreneur|startup|start-up|auto-entrepreneur|micro-entreprise|consultant|lancer mon","entrepreneur"],["pizz|resto|restau|burger|kebab|sushi|tacos|grill|bistro|brasserie|café|cafe|snack|traiteur","resto"],["coif|barb|hair|salon","coiffeur"],["garage|auto|pneu|carross|méca|meca","garage"],["instit|beaut|ongle|nail|esthé|esthe|spa|massage","beaute"],["boulang|pâtiss|patiss|pain|gâteau|gateau|cake","boulangerie"],["plomb|élec|elec|peint|maçon|macon|menuis|serrur|chauff|artisan|dépann|depann","artisan"],["wear|shop|store|brand|marque|bijou|cosm|boutique|collection","marque"],["coach|conseil|formation|consult|freelance|photo|vidéo|video|design|agence|studio","coach"],["asso|club|collectif|événement|evenement|festival","asso"]];
+var STYLES={chic:{label:"Chic",sw:"#1b1b1b",sub:"élégant, lettres fines"},street:{label:"Street",sw:"#ff3d00",sub:"noir, brut, carré"},nature:{label:"Nature",sw:"#4e8f4a",sub:"doux, arrondi"},neon:{label:"Néon",sw:"#c026d3",sub:"sombre, lumineux"},mini:{label:"Minimal",sw:"#ffffff",sub:"blanc, net"}};
+var SP={chic:{},street:{p:"#ff3d00",p2:"#2a2a2a"},nature:{p:"#4e8f4a",p2:"#e6efdf"},neon:{p:"#c026d3",p2:"#2a1540"},mini:{}};
+var FEATS=[["book","Réservation en ligne"],["shop","Boutique / paiement"],["gal","Galerie photos"],["vid","Vidéo"],["chat","Bouton WhatsApp"],["avis","Avis Google"],["map","Plan d'accès"],["lang","Multilingue"],["qr","Menu QR code"],["news","Newsletter"],["pay","Paiement en ligne"],["night","Mode nuit"],["fx3d","Effet 3D"],["anim","Animations"],["holo","Hologramme"],["parts","Particules"],["snd","Musique / son"]];
+var S={act:"resto",sty:"chic",name:"Pizzeria Luigi",city:"Lyon",on:{avis:true,map:true,book:true,gal:true},custom:null,photo:null};
+var chips=document.getElementById("chips"),styles=document.getElementById("styles"),feats=document.getElementById("feats");
+var nom=document.getElementById("nom"),ville=document.getElementById("ville");
+nom.value=S.name;ville.value=S.city;
+var manual=false,last=null;
+Object.keys(T).forEach(function(k){var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=T[k].label;b.dataset.k=k;b.setAttribute("aria-pressed",k===S.act);b.onclick=function(){manual=true;setAct(k);render()};chips.appendChild(b)});
+Object.keys(STYLES).forEach(function(k){var b=document.createElement("button");b.type="button";b.className="chip style";b.style.setProperty("--sw",STYLES[k].sw);b.innerHTML="<i></i>"+STYLES[k].label+"<small>"+STYLES[k].sub+"</small>";b.dataset.k=k;b.setAttribute("aria-pressed",k===S.sty);b.onclick=function(){setSty(k);render()};styles.appendChild(b)});
+FEATS.forEach(function(f){var b=document.createElement("button");b.type="button";b.className="feat";b.innerHTML="<b></b>"+f[1];b.dataset.k=f[0];b.setAttribute("aria-pressed",!!S.on[f[0]]);b.onclick=function(){S.on[f[0]]=!S.on[f[0]];b.setAttribute("aria-pressed",!!S.on[f[0]]);last=f[0];render()};feats.appendChild(b)});
+function setAct(k){S.act=k;chips.querySelectorAll(".chip").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.k===k)})}
+function setSty(k){S.sty=k;styles.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed",c.dataset.k===k)})}
+nom.addEventListener("input",function(){S.name=nom.value;if(!manual){var n=nom.value.toLowerCase();for(var i=0;i<KW.length;i++){if(new RegExp(KW[i][0]).test(n)){setAct(KW[i][1]);break}}}render()});
+ville.addEventListener("input",function(){S.city=ville.value;render()});
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function N(k){return (last===k)?' new':''}
+function tint(hex){var r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);function m(c){return Math.round(c+(255-c)*.82)}return "rgb("+m(r)+","+m(g)+","+m(b)+")"}
+var TAGS={resto:["Sur place","À emporter","Livraison","Terrasse"],coiffeur:["Coupe","Barbe","Soins","Sans RDV"],garage:["Entretien","Pneus","Diagnostic","Carrosserie"],beaute:["Ongles","Visage","Épilation","Regard"],boulangerie:["Pain","Viennoiseries","Gâteaux","Traiteur"],artisan:["Urgence","Devis gratuit","Garantie","24h/24"],marque:["Nouveautés","Hoodies","Tees","Accessoires"],ecommerce:["Nouveautés","Promos","Livraison 48 h","Retours gratuits"],entrepreneur:["Offres","Rendez-vous","Résultats","Contact"],coach:["Visio","Sur place","Suivi","Programme"],asso:["Événements","Adhérer","Bénévolat","Actus"],autre:["Services","Conseil","Devis","Contact"]};
+var NAMES=["Julie M.","Thomas L.","Camille R.","Nicolas P.","Marie D."];
+function build(st){
+  st=st||S;var t=T[st.act],on=st.on,name=(st.name||"").trim()||"Ton projet",city=(st.city||"").trim(),sp=SP[st.sty]||{},p=st.custom||sp.p||t.p,p2=st.custom?tint(st.custom):(sp.p2||t.p2);
+  var ini=name.split(/\s+/).slice(0,2).map(function(w){return w[0]||''}).join('').toUpperCase();
+  var night=on.night?';--bgc:#0f0f12;--tx:#f4f4f4;--p2:#1e1e24;--p2tx:#f4f4f4':'';
+  var who=NAMES[(name.length+city.length)%NAMES.length];
+  var h='<div class="s st-'+st.sty+(on.fx3d?' fx3d':'')+(on.anim?' anim':'')+(on.holo?' holo':'')+'" style="--p:'+p+';--p2:'+p2+night+(st.photo?';--photo:url('+st.photo+')':'')+'">';
+  h+='<div class="top"><i>9:41</i><i>●●● ◗</i></div>';
+  h+='<div class="nav"><div class="nm"><span class="logo">'+esc(ini)+'</span><span>'+esc(name)+'</span></div>'+(on.lang?'<span class="langs">FR · EN</span>':'')+'<i></i></div>';
+  h+='<div class="hero2 art'+(st.photo?' ph':'')+'">'+(on.parts?'<div class="parts">'+[0,1,2,3,4,5,6,7].map(function(i){return '<i style="left:'+(8+i*12)+'%;animation-delay:'+(i*.7)+'s;animation-duration:'+(4+i%3)+'s"></i>'}).join('')+'</div>':'')+'<span class="badge">★ 4,8 · 127 avis'+(city?' · '+esc(city):'')+'</span><h3>'+t.tag+'</h3><p>'+t.sub+'</p><div class="row"><span class="b">'+t.btn+'</span><span class="b2">'+t.a1+'</span></div></div>';
+  h+='<div class="tags">'+TAGS[st.act].map(function(x){return '<span>'+x+'</span>'}).join('')+'</div>';
+  if(on.vid) h+='<div class="sec'+N("vid")+'"><h4>En vidéo</h4><div class="vid art"><i>▶</i></div></div>';
+  h+='<div class="sec"><h4>'+t.sec+'<small>Voir tout</small></h4><div class="cards">'+t.items.map(function(r,i){return '<div class="card v'+(i+1)+'"><div class="img art">'+(i===0?'<b>Populaire</b>':'')+'</div><div class="t">'+r[0]+'</div><small>'+r[1]+'</small><div class="pr">'+r[2]+'</div></div>'}).join("")+'</div></div>';
+  if(on.book) h+='<div class="sec'+N("book")+'"><h4>Réserver<small>Dispo aujourd\'hui</small></h4><div class="book"><div class="days"><span>L</span><span>M</span><span class="on">M</span><span>J</span><span>V</span><span>S</span><span>D</span></div><div class="slots"><span>10:00</span><span class="on">11:30</span><span>14:00</span><span>16:30</span><span>18:00</span></div></div></div>';
+  if(on.shop) h+='<div class="sec'+N("shop")+'"><h4>Boutique<small>Livraison 48 h</small></h4><div class="shop"><div><i class="art"></i><b>'+t.items[0][0]+'</b><span>'+t.items[0][2]+'</span><em>Ajouter</em></div><div><i class="art"></i><b>'+t.items[1][0]+'</b><span>'+t.items[1][2]+'</span><em>Ajouter</em></div></div></div>';
+  if(on.gal) h+='<div class="sec'+N("gal")+'"><h4>En images</h4><div class="gal"><i class="art'+(st.photo?' ph':'')+'"></i><i class="art"></i><i class="art"></i></div></div>';
+  if(on.avis) h+='<div class="sec'+N("avis")+'"><h4>Avis<small>Google · 4,8</small></h4><div class="avis"><div class="who"><i>'+who[0]+'</i><div>'+who+'<small>★★★★★</small></div></div>'+t.avis+'</div></div>';
+  if(on.qr) h+='<div class="sec'+N("qr")+'"><h4>Menu QR code</h4><div class="qr"><canvas width="64" height="64" class="qrc"></canvas><span>Scanne pour voir la carte sur ton téléphone</span></div></div>';
+  if(on.pay||on.shop) h+='<div class="sec'+N("pay")+'"><h4>Paiement sécurisé<small>Panier · 2 articles</small></h4><div class="checkout"><div class="line"><span>'+t.items[0][0]+'</span><b>'+t.items[0][2]+'</b></div><div class="line"><span>'+t.items[1][0]+'</span><b>'+t.items[1][2]+'</b></div><div class="line tot"><span>Total</span><b>'+(t.items[0][2].replace(/[^0-9]/g,'')&&t.items[1][2].replace(/[^0-9]/g,'')?(parseInt(t.items[0][2])+parseInt(t.items[1][2]))+' €':'98 €')+'</b></div><div class="apay">Apple Pay</div><div class="pay"><span>CB</span><span>PayPal</span><span>3x sans frais</span><span>🔒 Sécurisé</span></div></div></div>';
+  h+='<div class="sec"><h4>Infos</h4><div class="info"><div><b>Horaires</b>'+t.hours+'</div><div><b>Adresse</b>'+(city?esc(city)+'<br>centre-ville':'Centre-ville')+'</div></div></div>';
+  if(on.map) h+='<div class="sec'+N("map")+'"><h4>Nous trouver</h4><div class="map"><span>'+(city?esc(city):"Itinéraire")+' · 4 min à pied</span></div></div>';
+  if(on.news) h+='<div class="sec'+N("news")+'"><h4>Newsletter</h4><div class="news"><span>ton@email.fr</span><b>OK</b></div></div>';
+  if(on.chat) h+='<div class="chat'+N("chat")+'">WA</div>';
+  if(on.snd) h+='<div class="snd'+N("snd")+'">♪</div>';
+  h+='<div class="btns"><span>'+t.a1+'</span><span>'+t.a2+'</span></div></div>';
+  return h;
+}
+function drawQR(c){var x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,64,64);x.fillStyle="#111";var s=1234;for(var i=0;i<16;i++)for(var j=0;j<16;j++){s=(s*9301+49297)%233280;if((s/233280)>.55||(i<5&&j<5)||(i>10&&j<5)||(i<5&&j>10))x.fillRect(i*4,j*4,4,4)}}
+var screen=document.getElementById("screen"),view="after";
+function gbuild(){var t=T[S.act],name=esc((S.name||"").trim()||"Ton projet"),city=esc((S.city||"").trim()||"près de moi"),ok=view==="after";
+  return '<div class="g"><div class="gl">Google</div><div class="gq">'+t.label.split(" /")[0].toLowerCase()+' '+city+'</div>'+
+  '<div class="gr"><b>'+(t.label.split(" /")[0])+' du Centre</b><span class="st">★★★★☆ 4,3</span><small>'+city+' · 400 m</small><span class="tag ok">Site web · Réserver</span></div>'+
+  '<div class="gr mine '+(ok?'ok':'no')+'"><b>'+name+'</b><span class="st">★★★★★ 4,8</span><small>'+city+' · 150 m</small><span class="tag '+(ok?'ok':'no')+'">'+(ok?'Site web · Réserver · Itinéraire':'Pas de site')+'</span></div>'+
+  '<div class="note">'+(ok?'Le client voit tout, il te choisit.':'Le client ne trouve rien, il va chez le concurrent.')+'</div></div>';}
+function render(){
+  if(view==="after"){screen.innerHTML=build();screen.querySelectorAll(".qrc").forEach(drawQR)}else{screen.innerHTML=gbuild()}
+  var n=Object.keys(S.on).filter(function(k){return S.on[k]}).length;
+  document.getElementById("counter").innerHTML="Ton site : <b>"+n+"</b> option"+(n>1?"s":"")+" ajoutée"+(n>1?"s":"");document.getElementById("fabn").textContent=n;
+  var name=(S.name||"").trim(),city=(S.city||"").trim(),wish=document.getElementById("wish").value.trim();
+  document.getElementById("rtitle").textContent=name?("Le site de "+name+(city?" à "+city:"")+", c'est le tien."):"Ce site, c'est le tien.";
+  var m="Salut, je veux le site de "+(name||"mon projet")+(city?" à "+city:"")+" avec "+n+" option"+(n>1?"s":"")+(wish?". Demande spéciale : "+wish:"")+".";
+  document.getElementById("rmsg").textContent=m;document.getElementById("wa").href="https://wa.me/33602793261?text="+encodeURIComponent(m);
+  last=null;
+}
+document.querySelectorAll("[data-ba]").forEach(function(b){b.onclick=function(){view=b.dataset.ba;document.querySelectorAll("[data-ba]").forEach(function(c){c.setAttribute("aria-pressed",c===b)});document.querySelectorAll(".toast").forEach(function(t){t.remove()});render()}});
+/* phrase parser */
+var COLORS=[["rouge","#d7263d"],["bleu","#1d4ed8"],["vert","#15803d"],["rose","#db2777"],["noir","#111111"],["orange","#ea580c"],["violet","#7c3aed"],["jaune","#eab308"],["dor","#b8860b"],["turquoise","#0d9488"],["marron","#78350f"],["beige","#c9a97a"]];
+var FKW=[["réserv|reserv|rendez|rdv","book"],["boutique|vend|achat|commande|e-commerce|ecommerce","shop"],["photo|galerie|réalisation|realisation","gal"],["vidéo|video","vid"],["whatsapp|message|écri|ecri","chat"],["avis|étoile|etoile","avis"],["plan|itinéraire|itineraire|adresse|trouver","map"],["anglais|espagnol|arabe|langue|multilingue|english","lang"],["qr|scann","qr"],["newsletter|email|mail","news"],["paiement|payer|carte|cb|paypal","pay"],["nuit|sombre|dark","night"],["3d|relief","fx3d"],["anim|bouge|mouvement|vivant","anim"],["hologramme|holo|futur|lumière|lumiere","holo"],["particule|étoile|etoile|neige|magie","parts"],["musique|(?:^|\\s)son(?:\\s|$)|audio|ambiance sonore","snd"]];
+var SKW=[["chic|élégant|elegant|luxe|classe","chic"],["street|urbain|brut|hip","street"],["nature|bio|doux|zen|vert","nature"],["néon|neon|gaming|lumineux|flashy","neon"],["minimal|simple|blanc|épuré|epure|net","mini"]];
+var BAD=/^(whatsapp|google|instagram|facebook|tiktok|paypal|apple|qr)$/i;
+function parse(txt){
+  var t=txt.toLowerCase(),r={feats:[],style:null,act:"autre",city:"",name:"",color:null};
+  for(var i=0;i<KW.length;i++){if(new RegExp(KW[i][0]).test(t)){r.act=KW[i][1];break}}
+  SKW.forEach(function(k){if(!r.style&&new RegExp(k[0]).test(t))r.style=k[1]});
+  FKW.forEach(function(k){if(new RegExp(k[0]).test(t))r.feats.push(k[1])});
+  COLORS.forEach(function(k){if(!r.color&&t.indexOf(k[0])>-1)r.color=k[1]});
+  var re=/(?:^|\s)(?:à|À|a|sur)\s+([A-ZÀ-Ý][\wÀ-ÿ'-]+(?:[\s-][A-ZÀ-Ý][\wÀ-ÿ'-]+)?)/g,m;while((m=re.exec(txt))){if(!BAD.test(m[1])){r.city=m[1];break}}
+  var n=txt.match(/(?:boutique en ligne|boutique|marque|startup|start-up|entreprise|société|projet)\s+([A-ZÀ-Ý][\wÀ-ÿ'&-]+(?:\s[A-ZÀ-Ý][\wÀ-ÿ'&-]+){0,2})/)||txt.match(/(?:s'appelle|m'appelle|appelé|nommé|appelée|nommée)\s+([A-ZÀ-Ý][\wÀ-ÿ'&-]+(?:\s[A-ZÀ-Ý][\wÀ-ÿ'&-]+){0,2})/)||txt.match(/[«"“]([^»"”]{2,30})[»"”]/)||txt.match(/(?:^|\s)(?:[Mm]a|[Mm]on|[Nn]otre|[Ll]a|[Ll]e)\s+(?:([\wÀ-ÿ]+)\s+)?([A-ZÀ-Ý][\wÀ-ÿ'&-]+(?:\s[A-ZÀ-Ý][\wÀ-ÿ'&-]+){0,2})/)||txt.match(/^(?!Je|J'|Ma|Mon|Notre|Nous|On|Un|Une|Coach)()([A-ZÀ-Ý][\wÀ-ÿ'&-]+(?:\s[A-ZÀ-Ý][\wÀ-ÿ'&-]+){0,2})/);
+  if(n&&n.length===3&&n[2]){var pre=n[1]&&/^(pizzeria|restaurant|garage|salon|institut|boulangerie|pâtisserie|café|bar|studio|agence|cabinet|boutique|brasserie|snack)$/i.test(n[1])?n[1][0].toUpperCase()+n[1].slice(1)+" ":"";n=[n[0],pre+n[2]]}
+  if(n&&n[1]!==r.city&&!BAD.test(n[1]))r.name=n[1].replace(/\s+(à|sur)$/,'');
+  if(!r.name){r.name=T[r.act].label.split(" /")[0]+(r.city?" "+r.city:"")}
+  if(r.name.indexOf(r.city)>0&&r.city&&r.name!==T[r.act].label.split(" /")[0]+" "+r.city)r.name=r.name.replace(" "+r.city,"");
+  return r;
+}
+var log=document.getElementById("log"),running=false;
+function sayBuild(){
+  var txt=document.getElementById("say").value.trim();if(!txt||running)return;running=true;
+  var r=parse(txt),steps=[];log.innerHTML="";view="after";document.querySelectorAll("[data-ba]").forEach(function(c){c.setAttribute("aria-pressed",c.dataset.ba==="after")});
+  Object.keys(S.on).forEach(function(k){S.on[k]=false});feats.querySelectorAll(".feat").forEach(function(b){b.setAttribute("aria-pressed","false")});
+  S.custom=r.color;document.getElementById("colr").textContent=S.custom?"":"(auto)";if(S.custom)document.getElementById("color").value=S.custom;
+  steps.push(["Projet : "+r.name,function(){S.name=r.name;S.city=r.city;nom.value=r.name;ville.value=r.city;manual=true;setAct(r.act)}]);
+  if(r.city)steps.push(["Ville : "+r.city,null]);
+  steps.push(["Activité : "+T[r.act].label,null]);
+  var st=r.style||"chic";steps.push(["Style : "+STYLES[st].label,function(){setSty(st)}]);
+  if(r.color)steps.push(["Couleur : la tienne",null]);
+  var all=r.feats.concat(r.act==="ecommerce"?["shop","pay","gal","avis"]:r.act==="entrepreneur"?["book","avis","map"]:["avis","map"]).filter(function(v,i,a){return a.indexOf(v)===i});
+  all.forEach(function(k){var lab=FEATS.filter(function(f){return f[0]===k})[0][1];steps.push(["add|"+lab,function(){S.on[k]=true;last=k;feats.querySelector('.feat[data-k="'+k+'"]').setAttribute("aria-pressed","true")}])});
+  steps.push(["Ton site est prêt.",null]);
+  if(matchMedia("(max-width:840px)").matches){setTimeout(function(){document.getElementById("stage").scrollIntoView({behavior:"smooth",block:"center"})},900)}
+  var i=0;(function next(){if(i>=steps.length){running=false;setTimeout(toasts,600);return}var st=steps[i++];var d=document.createElement("div");if(st[0].indexOf("add|")===0){d.className="add";d.textContent=st[0].slice(4)}else d.textContent=st[0];log.appendChild(d);if(st[1])st[1]();render();setTimeout(next,i===1?500:420)})();
+}
+document.getElementById("sayb").onclick=sayBuild;
+document.getElementById("say").addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sayBuild()}});
+document.querySelectorAll("[data-say]").forEach(function(b){b.onclick=function(){document.getElementById("say").value=b.dataset.say;sayBuild()}});
+document.getElementById("photo").addEventListener("change",function(e){var f=e.target.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){S.photo=rd.result;document.getElementById("photol").textContent="Ta photo est dans le site ✓";last="gal";render()};rd.readAsDataURL(f)});
+document.getElementById("color").addEventListener("input",function(e){S.custom=e.target.value;document.getElementById("colr").textContent="";render()});
+document.getElementById("wish").addEventListener("input",render);
+/* fullscreen, fab, tilt */
+function openFull(){var o=document.createElement("div");o.className="fs";o.innerHTML='<button class="x" type="button">Fermer ✕</button><div class="inner">'+(view==="after"?build():gbuild())+'</div>';o.querySelector(".x").onclick=function(){o.remove()};document.body.appendChild(o);o.querySelectorAll(".qrc").forEach(drawQR)}
+document.getElementById("fullb").onclick=openFull;
+var stage=document.getElementById("stage"),fab=document.getElementById("fab"),ph=stage.querySelector(".phone");
+if(!matchMedia("(hover:hover)").matches){ph.addEventListener("click",openFull)}
+if("IntersectionObserver" in window){new IntersectionObserver(function(e){var vis=e[0].isIntersecting;var top=e[0].boundingClientRect.top<0;fab.classList.toggle("show",!vis&&top&&!document.querySelector(".fs"))},{threshold:.05}).observe(stage)}
+fab.onclick=function(){fab.classList.remove("show");openFull()};
+/* toasts + confetti */
+var TOASTS=[["#25d366","WA","Nouveau message","« Bonjour, vous êtes ouverts dimanche ? »"],["#1d4ed8","RDV","Nouvelle réservation","Julie · jeudi 11h30"],["#e6a100","★","Nouvel avis 5 étoiles","« Super accueil, je recommande ! »"],["#111","€","Nouvelle commande","2 articles · 38 €"]];
+function toasts(){var i=0;(function one(){if(i>=3)return;var t=TOASTS[(i+Math.floor(Math.random()*2))%TOASTS.length];var d=document.createElement("div");d.className="toast";d.innerHTML='<i style="background:'+t[0]+'">'+t[1]+'</i><div><b>'+t[2]+'</b>'+t[3]+'</div>';document.body.appendChild(d);setTimeout(function(){d.remove()},3800);i++;setTimeout(one,2600)})()}
+function confetti(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.id="confetti";c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);var x=c.getContext("2d"),ps=[],cols=["#7fe0bd","#d9ff5c","#ffffff","#17b184"];for(var i=0;i<120;i++)ps.push({x:c.width/2,y:c.height*.4,vx:(Math.random()-.5)*14,vy:-Math.random()*12-4,r:Math.random()*6+3,c:cols[i%4],a:Math.random()*6});var t0=Date.now();(function f(){var dt=(Date.now()-t0)/1000;x.clearRect(0,0,c.width,c.height);ps.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.a+=.1;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);x.restore()});if(dt<2.2)requestAnimationFrame(f);else c.remove()})()}
+/* gallery, marquee, wall */
+var EX=[{act:"ecommerce",sty:"chic",name:"Maison Lila",city:"",on:{shop:true,pay:true,gal:true,avis:true},cap:"E-commerce · paiement en ligne"},{act:"entrepreneur",sty:"mini",name:"Kopa",city:"Paris",on:{book:true,avis:true,vid:true},cap:"Entrepreneur · prise de rendez-vous"},{act:"coiffeur",sty:"street",name:"Barber King",city:"Marseille",on:{book:true,avis:true,gal:true,chat:true},cap:"Commerce · réservation"}];
+document.getElementById("gallery").innerHTML=EX.map(function(e,i){return '<div class="ex"><div class="phone"><div class="screen"><div class="inner">'+build(e)+'</div></div></div><p class="cap"><b>'+esc(e.name)+'</b>'+e.cap+'</p></div>'}).join("");
+document.querySelectorAll("#gallery .qrc").forEach(drawQR);
+var ALL=[["Logo offert","Un logo pour ton site, ton TikTok, ton Instagram, ta vitrine. Inclus dans les 900 €."],["Réservation en ligne","Tes clients prennent rendez-vous à 23h, sans t'appeler."],["Boutique en ligne","Vends tes produits, paiement CB, Apple Pay, PayPal."],["Menu QR code","Le client scanne, la carte s'affiche. Tu changes un prix, c'est à jour partout."],["Bouton WhatsApp","Un appui, ils t'écrivent. Simple."],["Avis Google","Tes vraies étoiles, affichées sur ton site."],["Galerie photos","Tes réalisations, ton équipe, ta boutique."],["Vidéo","Une vidéo de toi ou de ton travail en page d'accueil."],["Multilingue","Français, anglais, espagnol, arabe… ce que tu veux."],["Plan d'accès","Itinéraire en un appui, horaires toujours à jour."],["Devis en ligne","Un formulaire, tu reçois la demande par message."],["Newsletter","Récupère les emails de tes clients et préviens-les des promos."],["Mode nuit","Un site qui s'adapte au téléphone de ton client."],["Prise de commande","Click & collect, livraison, tout est possible."],["Espace membre","Pour une asso, une salle de sport, un club."],["Blog / actus","Tes nouveautés, tes événements, tes promos."],["Agenda","Tes événements, tes disponibilités, en direct."],["3D","Ton logo, ton produit ou ta boutique en relief, qui tourne."],["Animations","Un site vivant : tout bouge, tout réagit au doigt."],["Hologramme","Effets lumineux, holographiques, futuristes."],["Particules et fonds animés","Neige, étoiles, fumée, lumière… l'ambiance que tu veux."],["Jeu concours / quiz","Un jeu sur ton site pour faire gagner tes clients."],["Musique et son","Une ambiance sonore si tu le souhaites."],["Réalité augmentée","Ton menu ou ton produit en 3D dans le téléphone du client."],["Nom de domaine","tonnom.fr, inclus."],["Trouvable sur Google","Ton site est fait pour apparaître quand on cherche ton activité."]];
+document.getElementById("wall").innerHTML=ALL.map(function(a){return '<div class="tile"><strong>'+a[0]+'</strong><p>'+a[1]+'</p></div>'}).join("")+'<div class="tile big"><strong>Et si ce n\'est pas dans la liste ?</strong><p>Tu me le dis, je le fais. La liste n\'est pas fermée.</p></div>';
+render();
+</script>
+
+</body>
+</html>
