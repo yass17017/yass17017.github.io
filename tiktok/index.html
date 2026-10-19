@@ -15,7 +15,7 @@ p.m{font-size:.85rem;color:#555;margin:.5rem 0 0;line-height:1.4}
 <p class="m">Appuie sur <b>Enregistrer dans Photos</b>, puis choisis « Enregistrer la vidéo » dans le menu qui s'ouvre. Si ça ne marche pas : « Ouvrir la vidéo », puis l'icône Partager de Safari → « Enregistrer la vidéo ».</p>
 <div id="list"></div>
 <script>
-var V=[["video-qui-on-est.mp4","1 · Qui on est"],["video-demo-une-phrase.mp4","2 · Une phrase, ton site apparaît"],["video-tout-ce-quon-peut-ajouter.mp4","3 · Tout ce qu'on peut ajouter"]];
+var V=[["video-qui-on-est.mp4","1 · Qui on est"],["video-demo-une-phrase.mp4","2 · Une phrase, ton site apparaît"],["video-tout-ce-quon-peut-ajouter.mp4","3 · Tout ce qu'on peut ajouter"],["video-4-les-3-erreurs.mp4","4 · Les 3 erreurs"],["video-5-le-test-google.mp4","5 · Le test Google"],["video-6-les-vrais-prix.mp4","6 · Les vrais prix"],["video-7-ton-site-en-5-jours.mp4","7 · Ton site en 5 jours"],["video-8-jai-deja-instagram.mp4","8 · « J'ai déjà Instagram »"]];
 document.getElementById('list').innerHTML=V.map(function(v){return '<div class="v"><h2>'+v[1]+'</h2><video controls playsinline preload="metadata" src="'+v[0]+'"></video><button class="b" data-f="'+v[0]+'">Enregistrer dans Photos</button><a class="b alt" href="'+v[0]+'">Ouvrir la vidéo</a></div>'}).join('');
 document.querySelectorAll('button.b').forEach(function(b){b.onclick=async function(){var t=b.textContent;b.textContent='Préparation…';try{var blob=await (await fetch(b.dataset.f)).blob();var f=new File([blob],b.dataset.f,{type:'video/mp4'});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Webfive'});b.textContent='✓ Fait'}else{location.href=b.dataset.f;b.textContent=t}}catch(e){b.textContent=t}}});
 </script></body></html>
