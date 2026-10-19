@@ -1,0 +1,40 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><title>Webfive · Lien personnalisé</title>
+<style>
+:root{--ink:#111;--muted:#6b6b6b;--line:#e8e8e8;--honey:#F5B800;--f:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;font-family:var(--f);color:var(--ink);background:#fafafa;padding:1.2rem 1rem 3rem}
+h1{font-size:1.5rem;margin:.2rem 0 .3rem}h1 em{font-style:normal;color:var(--honey)}p.lead{color:var(--muted);margin:0 0 1.2rem;font-size:.95rem}
+label{display:block;font-weight:600;font-size:.9rem;margin:.9rem 0 .3rem}
+input,select{width:100%;font:inherit;padding:.85rem .9rem;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1rem;margin-top:1.2rem}
+.card h2{font-size:1rem;margin:0 0 .5rem}
+.out{font-size:.92rem;line-height:1.45;white-space:pre-wrap;word-break:break-word;background:#f6f6f6;border-radius:12px;padding:.8rem}
+.link{font-weight:600;word-break:break-all}
+button{width:100%;margin-top:.6rem;padding:.9rem;border:0;border-radius:12px;background:var(--ink);color:#fff;font:600 .95rem var(--f)}
+button.y{background:var(--honey);color:var(--ink)}button:active{opacity:.8}
+small.ok{display:block;text-align:center;color:#1fb257;font-weight:600;margin-top:.4rem;min-height:1.2em}
+</style></head><body>
+<h1>Lien <em>personnalisé</em></h1>
+<p class="lead">Remplis le nom du commerce : tu obtiens un lien qui ouvre son site déjà construit, et le message prêt à envoyer.</p>
+<label>Nom du commerce</label><input id="c" placeholder="Ex : N.E.W Studio" autocomplete="off">
+<label>Ville</label><input id="v" placeholder="Ex : Chevilly-Larue" value="Chevilly-Larue">
+<label>Activité</label><select id="a">
+<option value="coiffeur">Coiffeur / barbier</option><option value="institut de beauté">Institut / ongles</option><option value="restaurant">Restaurant / snack</option><option value="pizzeria">Pizzeria</option><option value="boulangerie">Boulangerie / pâtisserie</option><option value="garage">Garage / auto</option><option value="artisan plombier">Artisan / dépannage</option><option value="coach">Coach / photographe / freelance</option><option value="boutique">Boutique / marque</option><option value="traiteur">Traiteur</option><option value="">Autre</option></select>
+<label>Prénom du gérant (si tu le connais)</label><input id="p" placeholder="Ex : Karim" autocomplete="off">
+
+<div class="card"><h2>1. Le lien</h2><div class="out link" id="link">—</div><button class="y" id="bl">Copier le lien</button><small class="ok" id="ol"></small></div>
+<div class="card"><h2>2. Le message Instagram / Facebook</h2><div class="out" id="msg">—</div><button id="bm">Copier le message</button><small class="ok" id="om"></small></div>
+<div class="card"><h2>3. Si pas de réponse après 3 jours</h2><div class="out" id="msg2">—</div><button id="bm2">Copier la relance</button><small class="ok" id="om2"></small></div>
+<script>
+var $=function(i){return document.getElementById(i)};
+function up(){var c=$("c").value.trim(),v=$("v").value.trim(),a=$("a").value,p=$("p").value.trim();
+ if(!c){$("link").textContent="—";$("msg").textContent="—";$("msg2").textContent="—";return}
+ var q=new URLSearchParams();q.set("c",c);if(v)q.set("v",v);if(a)q.set("a",a);
+ var link="https://webfive.fr/?"+q.toString().replace(/%20/g,"+");$("link").textContent=link;
+ var hi=p?"Bonjour "+p+" !":"Bonjour !";
+ $("msg").textContent=hi+" Je suis Yassine, je fais des sites pour les commerces de "+(v||"la ville")+". J'ai vu que "+c+" n'avait pas encore de site, alors je vous en ai préparé un, juste pour voir 👇\n\n"+link+"\n\nSi ça vous plaît : 900 € une seule fois, livré en 5 jours, logo offert, et vous ne payez qu'à la livraison. Sinon, aucun souci, bonne journée 🙂";
+ $("msg2").textContent=hi+" Juste pour savoir si vous aviez eu le temps de regarder le site que j'avais préparé pour "+c+" : "+link+"\nJe le garde encore quelques jours, après je le retire. Bonne journée !";
+}
+["c","v","a","p"].forEach(function(i){$(i).addEventListener("input",up);$(i).addEventListener("change",up)});
+function cp(src,ok){return function(){var t=$(src).textContent;if(t==="—")return;navigator.clipboard.writeText(t).then(function(){$(ok).textContent="Copié ✓";setTimeout(function(){$(ok).textContent=""},1500)},function(){var r=document.createRange();r.selectNodeContents($(src));var s=getSelection();s.removeAllRanges();s.addRange(r);$(ok).textContent="Sélectionné : appuie sur Copier"})}}
+$("bl").onclick=cp("link","ol");$("bm").onclick=cp("msg","om");$("bm2").onclick=cp("msg2","om2");
+</script></body></html>

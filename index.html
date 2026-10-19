@@ -44,6 +44,7 @@ p{margin:0}
 /* hero */
 .hero{text-align:center;display:grid;justify-items:center}
 .hero .lead{margin-inline:auto}
+.hello{margin:1.6rem auto 0;max-width:40rem;background:var(--honey,#F5B800);color:#111;border-radius:16px;padding:.9rem 1.1rem;font-weight:600;font-size:1.02rem;line-height:1.35;text-align:left;animation:hello .6s cubic-bezier(.2,.8,.2,1) both}@keyframes hello{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .say{margin-top:2.2rem;width:100%;max-width:40rem;background:#fff;border-radius:22px;padding:.5rem;display:grid;gap:.4rem;box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 40px -12px rgba(0,0,0,.18),0 0 0 1px var(--line);text-align:left}
 textarea{font:400 1.05rem var(--f);padding:.9rem 1rem .5rem;border-radius:16px;border:0;background:transparent;color:var(--ink);width:100%;min-width:0;resize:none;min-height:4.4rem;line-height:1.5}
 textarea::placeholder{color:#a1a1a6}
@@ -649,6 +650,13 @@ function sayBuild(){
   var i=0;(function next(){if(i>=steps.length){running=false;setTimeout(toasts,600);return}var st=steps[i++];var d=document.createElement("div");if(st[0].indexOf("add|")===0){d.className="add";d.textContent=st[0].slice(4)}else d.textContent=st[0];log.appendChild(d);if(st[1])st[1]();render();setTimeout(next,i===1?500:420)})();
 }
 document.getElementById("sayb").onclick=sayBuild;
+/* lien personnalisé : webfive.fr/?c=Nom&v=Ville&a=activité */
+(function(){try{var q=new URLSearchParams(location.search),c=(q.get("c")||"").trim();if(!c)return;var a=(q.get("a")||"").trim(),v=(q.get("v")||"").trim();
+var txt=(a?a+" ":"")+(v?"à "+v+", ":"")+"« "+c+" », je veux que les clients me trouvent, réservent en ligne et m'écrivent sur WhatsApp";
+var say=document.getElementById("say");say.value=txt;
+var h=document.createElement("div");h.className="hello";h.innerHTML="👋 Bonjour <b>"+esc(c)+"</b> ! Voici à quoi ton site pourrait ressembler. Regarde ça se construire 👇";
+var box=document.querySelector(".say");box.parentNode.insertBefore(h,box);
+setTimeout(function(){box.scrollIntoView({behavior:"smooth",block:"center"})},400);setTimeout(sayBuild,1500)}catch(e){}})();
 document.getElementById("say").addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sayBuild()}});
 document.querySelectorAll("[data-say]").forEach(function(b){b.onclick=function(){document.getElementById("say").value=b.dataset.say;sayBuild()}});
 document.getElementById("photo").addEventListener("change",function(e){var f=e.target.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){S.photo=rd.result;document.getElementById("photol").textContent="Ta photo est dans le site ✓";last="gal";render()};rd.readAsDataURL(f)});
