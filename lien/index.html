@@ -31,8 +31,8 @@ function up(){var c=$("c").value.trim(),v=$("v").value.trim(),a=$("a").value,p=$
  var q=new URLSearchParams();q.set("c",c);if(v)q.set("v",v);if(a)q.set("a",a);
  var link="https://webfive.fr/?"+q.toString().replace(/%20/g,"+");$("link").textContent=link;
  var hi=p?"Bonjour "+p+" !":"Bonjour !";
- $("msg").textContent=hi+" Je suis Yassine, je fais des sites pour les commerces de "+(v||"la ville")+". J'ai vu que "+c+" n'avait pas encore de site, alors je vous en ai préparé un, juste pour voir 👇\n\n"+link+"\n\nSi ça vous plaît : 900 € une seule fois, livré en 5 jours, logo offert, et vous ne payez qu'à la livraison. Sinon, aucun souci, bonne journée 🙂";
- $("msg2").textContent=hi+" Juste pour savoir si vous aviez eu le temps de regarder le site que j'avais préparé pour "+c+" : "+link+"\nJe le garde encore quelques jours, après je le retire. Bonne journée !";
+ $("msg").textContent=hi+" Nous sommes Webfive, on crée des sites internet pour les commerces de "+(v||"la ville")+". J'ai vu que "+c+" n'avait pas encore de site, alors on vous en a préparé un, juste pour voir 👇\n\n"+link+"\n\nSi ça vous plaît : 900 € une seule fois, livré en 5 jours, logo offert, et vous ne payez qu'à la livraison. Sinon, aucun souci, bonne journée 🙂";
+ $("msg2").textContent=hi+" Juste pour savoir si vous aviez eu le temps de regarder le site qu'on avait préparé pour "+c+" : "+link+"\nOn le garde encore quelques jours, après on le retire. Bonne journée !";
 }
 ["c","v","a","p"].forEach(function(i){$(i).addEventListener("input",up);$(i).addEventListener("change",up)});
 function cp(src,ok){return function(){var t=$(src).textContent;if(t==="—")return;navigator.clipboard.writeText(t).then(function(){$(ok).textContent="Copié ✓";setTimeout(function(){$(ok).textContent=""},1500)},function(){var r=document.createRange();r.selectNodeContents($(src));var s=getSelection();s.removeAllRanges();s.addRange(r);$(ok).textContent="Sélectionné : appuie sur Copier"})}}
